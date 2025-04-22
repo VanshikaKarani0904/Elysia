@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Cart</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cinzel', serif;
+            background: linear-gradient(to right, #fceaff, #f9f4ff);
+            padding: 2rem;
+            color: #2a1f2d;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 3rem;
+            background: linear-gradient(to right, #2c003e, #5c0d5e);
+            color: white;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #f7d8ff;
+        }
+
+        .nav-links a {
+            margin-left: 2rem;
+            color: #e0cce5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 2rem 0;
+            font-size: 3rem;
+            color: #4c0066;
+        }
+
+        .cart-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .cart-item {
+            background: white;
+            border-radius: 1rem;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .cart-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 1rem;
+        }
+
+        .cart-item h3 {
+            margin-top: 1rem;
+            color: #520a5f;
+        }
+
+        .quantity-control {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .quantity-btn {
+            background-color: #720078;
+            color: white;
+            border: none;
+            padding: 0.4rem 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .quantity-display {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">Elysia</div>
+        <div class="nav-links">
+            <a href="home.html">Home</a>
+            <a href="cart.html">My Cart</a>
+        </div>
+    </div>
+
+    <h1>Your Cart</h1>
+    <div class="cart-container" id="cart-container">
+        <!-- Items will be loaded here -->
+    </div>
+
+    <script>
+        const container = document.getElementById('cart-container');
+        let rawCart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Convert raw cart to object with quantities
+        const cartMap = {};
+        rawCart.forEach(item => {
+            if (cartMap[item.name]) {
+                cartMap[item.name].quantity += 1;
+            } else {
+                cartMap[item.name] = { ...item, quantity: 1 };
+            }
+        });
+
+        const updateLocalStorage = () => {
+            const updated = [];
+            for (let key in cartMap) {
+                const item = cartMap[key];
+                for (let i = 0; i < item.quantity; i++) {
+                    updated.push({ name: item.name, image: item.image });
+                }
+            }
+            localStorage.setItem('cart', JSON.stringify(updated));
+        };
+
+        const renderCart = () => {
+            container.innerHTML = ''; // Clear old content
+
+            const keys = Object.keys(cartMap);
+            if (keys.length === 0) {
+                container.innerHTML = '<p style="text-align:center; font-size:1.2rem;">Your cart is empty.</p>';
+                return;
+            }
+
+            keys.forEach(name => {
+                const item = cartMap[name];
+                const card = document.createElement('div');
+                card.className = 'cart-item';
+                card.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}">
+                    <h3>${item.name}</h3>
+                    <div class="quantity-control">
+                        <button class="quantity-btn" onclick="changeQuantity('${name}', -1)">−</button>
+                        <span class="quantity-display" id="qty-${name}">${item.quantity}</span>
+                        <button class="quantity-btn" onclick="changeQuantity('${name}', 1)">+</button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        };
+
+        function changeQuantity(name, delta) {
+            if (!cartMap[name]) return;
+
+            cartMap[name].quantity += delta;
+
+            if (cartMap[name].quantity <= 0) {
+                delete cartMap[name];
+            }
+
+            updateLocalStorage();
+            renderCart();
+        }
+
+        renderCart();
+    </script>
+</body>
+</html>

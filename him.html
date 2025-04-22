@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Elysia | For Him</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cinzel', serif;
+        }
+
+        body {
+            background: linear-gradient(to right, rgba(255,255,255,0.7), rgba(255,255,255,0.6)),
+                        url('Content for perfume brand.jpeg') no-repeat center center/cover;
+            color: #2a1f2d;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 3rem;
+            background: linear-gradient(to right, #2c003e, #5c0d5e);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #f7d8ff;
+        }
+
+        .nav-links a {
+            margin-left: 2rem;
+            color: #e0cce5;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            height: 2px;
+            width: 0;
+            background: #fcb8ff;
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            transition: width 0.4s;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .page-title {
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+            font-size: 3rem;
+            color: #4c0066;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 2rem 5%;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 1rem;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .product-card h3 {
+            margin: 1rem 0 0.5rem;
+            font-size: 1.5rem;
+            color: #520a5f;
+        }
+
+        .btn-group {
+            margin-bottom: 1rem;
+        }
+
+        .btn-group button {
+            padding: 0.5rem 1.2rem;
+            margin: 0.3rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .wishlist-btn {
+            background-color: #f7e1ff;
+            color: #720078;
+        }
+
+        .wishlist-btn:hover {
+            background-color: #f3c7ff;
+        }
+
+        .cart-btn {
+            background-color: #720078;
+            color: white;
+        }
+
+        .cart-btn:hover {
+            background-color: #540057;
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.2rem;
+            }
+
+            .product-card img {
+                height: 220px;
+            }
+        }
+    </style>
+
+    <script>
+        function addToCart(name, image) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ name: name, image: image });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(name + " added to cart!");
+        }
+    </script>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">Elysia</div>
+        <div class="nav-links">
+            <a href="home.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="stores.html">Our Stores</a>
+            <a href="cart.html">My Cart</a>
+        </div>
+    </div>
+
+    <h1 class="page-title">For Him</h1>
+
+    <div class="product-grid">
+        <!-- Product 1 -->
+        <div class="product-card">
+            <img src="him1.jpg" alt="Perfume 1">
+            <h3>Royal Musk</h3>
+            <div class="btn-group">
+                <button class="wishlist-btn">Add to Wishlist</button>
+                <button class="cart-btn" onclick="addToCart('Royal Musk', 'him1.jpg')">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+            <img src="him2.jpg" alt="Perfume 2">
+            <h3>Oud Intense</h3>
+            <div class="btn-group">
+                <button class="wishlist-btn">Add to Wishlist</button>
+                <button class="cart-btn" onclick="addToCart('Oud Intense', 'him2.jpg')">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+            <img src="BLEU DE CHANEL by Chanel for Men.jpeg" alt="Perfume 3">
+            <h3>Blue De Chanel</h3>
+            <div class="btn-group">
+                <button class="wishlist-btn">Add to Wishlist</button>
+                <button class="cart-btn" onclick="addToCart('Blue De Chanel', 'BLEU DE CHANEL by Chanel for Men.jpeg')">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card">
+            <img src="camilo.jpg" alt="Perfume 4">
+            <h3>Givenchy Gentleman</h3>
+            <div class="btn-group">
+                <button class="wishlist-btn">Add to Wishlist</button>
+                <button class="cart-btn" onclick="addToCart('Givenchy Gentleman', 'camilo.jpg')">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product-card">
+            <img src="dior.jpg" alt="Perfume 5">
+            <h3>Dior Sauvage</h3>
+            <div class="btn-group">
+                <button class="wishlist-btn">Add to Wishlist</button>
+                <button class="cart-btn" onclick="addToCart('Dior Sauvage', 'dior.jpg')">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product-card">
+            <img src="ysl.jpg" alt="Perfume 6">
+            <h3>Leather Woods</h3>
+            <div class="btn-group">
+                <button class="wishlist-btn">Add to Wishlist</button>
+                <button class="cart-btn" onclick="addToCart('Leather Woods', 'ysl.jpg')">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

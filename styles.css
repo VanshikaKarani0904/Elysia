@@ -1,0 +1,187 @@
+/* style.css */
+
+body {
+    margin: 0;
+    font-family: 'Bodoni Moda', serif;
+    background-color: #f0f0f0;
+    overflow: hidden;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@700&display=swap');
+
+.navbar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #9BBF86;
+    position: relative;
+    animation: slideIn 1s;
+}
+
+@keyframes slideIn {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.menu-icon {
+    font-size: 30px;
+    cursor: pointer;
+    margin-right: 20px;
+    color: white;
+}
+
+.logo {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    position: absolute;
+    right: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-family: 'Bodoni Moda', serif;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #cfe2b3;
+}
+
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    height: 100vh;
+    animation: fadeIn 2s;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.section {
+    position: relative;
+    width: 50%;
+    cursor: pointer;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1s;
+}
+
+.section:hover img {
+    transform: scale(1.1);
+}
+
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4rem;
+    color: white;
+    font-family: 'Bodoni Moda', serif;
+    font-style: italic;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    transition: all 0.5s;
+}
+
+.section:hover .overlay {
+    text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.9);
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #9BBF86;
+    overflow: auto;
+    transform: translateX(-100%);
+    transition: 0.3s;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 10px;
+    cursor: pointer;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.sidebar ul li:hover {
+    background-color: #cfe2b3;
+}
+
+.close-btn {
+    text-align: right;
+    padding: 10px;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    padding: 20px;
+    animation: fadeInUp 1.5s;
+}
+
+.content h1 {
+    font-size: 4rem;
+    color: #4b4b4b;
+    margin-bottom: 1rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.content p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.content ul li {
+    font-size: 1.1rem;
+    padding: 0.5rem 0;
+    transition: color 0.3s;
+}
+
+.content ul li:hover {
+    color: #9BBF86;
+}
+
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}

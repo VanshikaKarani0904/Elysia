@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Our Stores | Elysia</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cinzel', serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(69, 15, 82, 0.6), rgba(20, 0, 40, 0.7)), 
+                        url('Dazzling Droplets.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            color: #f0e6f9;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 3rem;
+            background: rgba(44, 0, 62, 0.85);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ffd0f7;
+        }
+
+        .nav-links a {
+            margin-left: 2rem;
+            color: #f6b6ff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            display: block;
+            height: 2px;
+            width: 0;
+            background: #ffc9ff;
+            transition: width 0.4s;
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .content {
+            padding: 8rem 2rem;
+            text-align: center;
+        }
+
+        .content h1 {
+            font-size: 3rem;
+            color: #ffcef5;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+            margin-bottom: 2rem;
+        }
+
+        .content ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .content li {
+            font-size: 1.3rem;
+            color: #f2ccf2;
+            margin: 1rem 0;
+            text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .content li:hover {
+            transform: scale(1.05);
+            color: #ffffff;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-links {
+                margin-top: 1rem;
+            }
+
+            .nav-links a {
+                margin: 0 1rem;
+                display: inline-block;
+            }
+
+            .content {
+                padding: 4rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">Elysia</div>
+        <div class="nav-links">
+            <a href="home.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="stores.html">Our Stores</a>
+        </div>
+    </div>
+
+    <div class="content">
+        <h1>Our Stores</h1>
+        <ul>
+            <li>Bangalore – 5th Avenue Mall, MG Road</li>
+            <li>New York – 5th Avenue, Manhattan</li>
+            <li>Berlin – Kurfürstendamm, Charlottenburg</li>
+        </ul>
+    </div>
+</body>
+</html>

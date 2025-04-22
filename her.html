@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Elysia | For Her</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cinzel', serif;
+        }
+
+        body {
+            background: linear-gradient(to right, rgba(211, 186, 239, 0.7), rgba(208, 124, 225, 0.6)),
+                        url('Content for perfume brand.jpeg') no-repeat center center/cover;
+            color: #2a1f2d;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 3rem;
+            background: linear-gradient(to right, #2c003e, #5c0d5e);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #f7d8ff;
+        }
+
+        .nav-links a {
+            margin-left: 2rem;
+            color: #e0cce5;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            height: 2px;
+            width: 0;
+            background: #fcb8ff;
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            transition: width 0.4s;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .page-title {
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+            font-size: 3rem;
+            color: #4c0066;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 2rem 5%;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 1rem;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .product-card h3 {
+            margin: 1rem 0 0.5rem;
+            font-size: 1.5rem;
+            color: #520a5f;
+        }
+
+        .btn-group {
+            margin-bottom: 1rem;
+        }
+
+        .btn-group button {
+            padding: 0.5rem 1.2rem;
+            margin: 0.3rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .wishlist-btn {
+            background-color: #f7e1ff;
+            color: #720078;
+        }
+
+        .wishlist-btn:hover {
+            background-color: #f3c7ff;
+        }
+
+        .cart-btn {
+            background-color: #720078;
+            color: white;
+        }
+
+        .cart-btn:hover {
+            background-color: #540057;
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #720078;
+            color: white;
+            padding: 0.8rem 1.2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 9999;
+        }
+
+        .notification.show {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.2rem;
+            }
+
+            .product-card img {
+                height: 220px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">Elysia</div>
+        <div class="nav-links">
+            <a href="home.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="stores.html">Our Stores</a>
+            <a href="cart.html">My Cart</a>
+        </div>
+    </div>
+
+    <h1 class="page-title">For Her</h1>
+
+    <div class="product-grid">
+        <!-- Product Cards -->
+        <div class="product-card">
+            <img src="Black Opium YSL.jpg" alt="YSL Black Opium">
+            <h3>YSL Black Opium</h3>
+            <div class="btn-group">
+                <button class="wishlist-btn">Add to Wishlist</button>
+                <button class="cart-btn" onclick="addToCart('YSL Black Opium', 'Black Opium YSL.jpg')">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="Coco Chanel.jpg" alt="Coco Chanel No.5">
+            <h3>Coco Chanel No.5</h3>
+            <div class="btn-group">
+                <button class="wishlist-btn">Add to Wishlist</button>
+                <button class="cart-btn" onclick="addToCart('Coco Chanel No.5', 'Coco Chanel.jpg')">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="Dior Water.jpg" alt="Dior Serenity">
+            <h3>Dior Serenity</h3>
+            <div class="btn-group">
+                <button class="wishlist-btn">Add to Wishlist</button>
+                <button class="cart-btn" onclick="addToCart('Dior Serenity', 'Dior Water.jpg')">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="Nina Ricci Venus.jpg" alt="Nina Ricci Venus">
+            <h3>Nina Ricci Venus</h3>
+            <div class="btn-group">
+                <button class="wishlist-btn">Add to Wishlist</button>
+                <button class="cart-btn" onclick="addToCart('Nina Ricci Venus', 'Nina Ricci Venus.jpg')">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="Paco Rabanne.jpg" alt="Paco Rabanne Olympea">
+            <h3>Paco Rabbane Olympea</h3>
+            <div class="btn-group">
+                <button class="wishlist-btn">Add to Wishlist</button>
+                <button class="cart-btn" onclick="addToCart('Paco Rabbane Olympea', 'Paco Rabanne.jpg')">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="Salvatorre Ferragamo Signorina.jpg" alt="Signorina">
+            <h3>Salvatorre Ferragamo Signorina</h3>
+            <div class="btn-group">
+                <button class="wishlist-btn">Add to Wishlist</button>
+                <button class="cart-btn" onclick="addToCart('Salvatorre Ferragamo Signorina', 'Salvatorre Ferragamo Signorina.jpg')">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="notification" class="notification">Item added to cart!</div>
+
+    <script>
+        function addToCart(name, image) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ name, image });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            showNotification();
+        }
+
+        function showNotification() {
+            const notification = document.getElementById('notification');
+            notification.classList.add('show');
+            setTimeout(() => notification.classList.remove('show'), 2000);
+        }
+    </script>
+</body>
+</html>
